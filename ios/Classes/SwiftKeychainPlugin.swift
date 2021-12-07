@@ -16,10 +16,11 @@ public class SwiftKeychainPlugin: NSObject, FlutterPlugin {
         guard let args = call.arguments as? [String : Any] else {return}
         let username = args["username"] as! String
         let password = args["password"] as! String
+        let server = args["server"] as! String
         let keychainItem = [
           kSecValueData: "\(password)".data(using: .utf8)!,
           kSecAttrAccount: "\(username)",
-          kSecAttrServer: "tt.com",
+          kSecAttrServer: "\(server)",
           kSecClass: kSecClassInternetPassword,
           kSecReturnAttributes: true
         ] as CFDictionary
@@ -30,11 +31,11 @@ public class SwiftKeychainPlugin: NSObject, FlutterPlugin {
     }else if(call.method == "getKeychainValue") {
         guard let args = call.arguments as? [String : Any] else {return}
         let username = args["username"] as! String
-
+        let server = args["server"] as! String
         let query = [
           kSecClass: kSecClassInternetPassword,
           kSecAttrAccount: "\(username)",
-          kSecAttrServer: "tt.com",
+          kSecAttrServer: "\(server)",
           kSecReturnAttributes: true,
           kSecReturnData: true
         ] as CFDictionary

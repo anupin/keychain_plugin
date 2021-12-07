@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
               Text('Running on: $_platformVersion\n'),
               MaterialButton(
                 onPressed: () async {
-                  String? value = await KeychainPlugin.setKeychainValue('anupin', 'pass');
+                  String? value = await KeychainPlugin.setKeychainValue('anupin', 'pass', '');
                   setState(() {
                     _platformVersion = value!;
                   });
@@ -69,7 +69,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),MaterialButton(
                 onPressed: () async {
-                  String? value = await KeychainPlugin.getKeychainValue('anupin');
+                  String? value = await KeychainPlugin.getKeychainValue('anupin', '');
                   setState(() {
                     _platformVersion = value!;
                   });

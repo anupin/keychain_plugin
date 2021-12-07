@@ -11,13 +11,13 @@ class KeychainPlugin {
     return version;
   }
 
-  static Future<String?> setKeychainValue(String username, String password) async {
-    final String? version = await _channel.invokeMethod('setKeychainValue', {"username":username,"password":password});
+  static Future<String?> setKeychainValue(String username, String password, String server) async {
+    final String? version = await _channel.invokeMethod('setKeychainValue', {"username":username,"password":password, "server": server});
     return version;
   }
 
-  static Future<String?> getKeychainValue(String username) async {
-    final String? version = await _channel.invokeMethod('getKeychainValue', {'username':username});
+  static Future<String?> getKeychainValue(String username, String server) async {
+    final String? version = await _channel.invokeMethod('getKeychainValue', {'username':username, "server": server});
     return version;
   }
 }
